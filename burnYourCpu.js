@@ -1,4 +1,4 @@
-const { GPU } = require("gpu.js");
+// const { GPU } = require("gpu.js");
 const os = require("node:os");
 const { fork } = require("node:child_process");
 
@@ -53,4 +53,4 @@ if (!process.argv[2]) {
 
 if (process.argv[2] === "cpu") burnCPU();
 if (process.argv[2] === "ram") burnRAM();
-if (process.argv[2] === "gpu") burnGPU();
+// if (process.argv[2] === "gpu") burnGPU();
