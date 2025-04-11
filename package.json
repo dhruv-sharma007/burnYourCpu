@@ -1,0 +1,15 @@
+{
+  "name": "burnyourcpu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "burnYourCpu.js",
+  "scripts": {
+    "start": "node burnYourCpu.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gpu.js": "^2.16.0"
+  }
+}
