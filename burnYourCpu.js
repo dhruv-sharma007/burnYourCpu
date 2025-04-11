@@ -1,4 +1,4 @@
-// const { GPU } = require("gpu.js");
+// const { GPU } = require("gpu.js"); // install gpu.js
 const os = require("node:os");
 const { fork } = require("node:child_process");
 
@@ -18,20 +18,20 @@ function burnRAM() {
 	}
 }
 
-function burnGPU() {
-	const gpu = new GPU();
-	const kernel = gpu
-		.createKernel(() => {
-			let sum = 0;
-			for (let i = 0; i < 1e5; i++) {
-				sum += Math.tan(i);
-			}
-			return sum;
-		})
-		.setOutput([1000]);
+// function burnGPU() {
+// 	const gpu = new GPU();
+// 	const kernel = gpu
+// 		.createKernel(() => {
+// 			let sum = 0;
+// 			for (let i = 0; i < 1e5; i++) {
+// 				sum += Math.tan(i);
+// 			}
+// 			return sum;
+// 		})
+// 		.setOutput([1000]);
 
-	setInterval(() => kernel(), 5); // Hit GPU every 5ms
-}
+// 	setInterval(() => kernel(), 5); // Hit GPU every 5ms
+// }
 
 // Fork CPU workers
 const numCPUs = os.cpus().length;
@@ -50,7 +50,13 @@ if (!process.argv[2]) {
 		fork(__filename, ["gpu"]);
 	}
 }
+const burn = () => {
+	console.log("Script started\n press ctrl/cmnd + c to stop  \n burning your cpu...")
+	if (process.argv[2] === "cpu") burnCPU();
+	if (process.argv[2] === "ram") burnRAM();
+	// if (process.argv[2] === "gpu") burnGPU();
+};
 
-if (process.argv[2] === "cpu") burnCPU();
-if (process.argv[2] === "ram") burnRAM();
-// if (process.argv[2] === "gpu") burnGPU();
+burn()
+
+// wait for few seconds
