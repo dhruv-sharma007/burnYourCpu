@@ -50,13 +50,14 @@ if (!process.argv[2]) {
 		fork(__filename, ["gpu"]);
 	}
 }
-const burn = () => {
-	console.log("Script started\n press ctrl/cmnd + c to stop  \n burning your cpu...")
-	if (process.argv[2] === "cpu") burnCPU();
-	if (process.argv[2] === "ram") burnRAM();
-	// if (process.argv[2] === "gpu") burnGPU();
-};
 
-burn()
+console.log(
+	"burning your cpu...",
+);
+if (process.argv[2] === "cpu") burnCPU();
+if (process.argv[2] === "ram") burnRAM();
+// if (process.argv[2] === "gpu") burnGPU();
+
+
 
 // wait for few seconds
